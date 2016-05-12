@@ -13,4 +13,47 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "authors", force: :cascade do |t|
+    t.text   "name"
+    t.string "image_url"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string  "title"
+    t.text    "description"
+    t.string  "image_url"
+    t.integer "year"
+    t.integer "category_id"
+  end
+
+  add_index "books", ["category_id"], name: "index_books_on_category_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.text   "description"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rate"
+    t.text    "comment"
+    t.integer "book_id"
+    t.integer "user_id"
+  end
+
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.integer "author_id"
+    t.integer "book_id"
+  end
+
+  add_index "roles", ["author_id"], name: "index_roles_on_author_id"
+  add_index "roles", ["book_id"], name: "index_roles_on_book_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+  end
+
 end

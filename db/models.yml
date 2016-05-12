@@ -1,3 +1,33 @@
+
+Book
+  title: string
+  description: text
+  image_url:  string
+  year: integer
+  category_id: integer
+
+Author
+  name: text
+  image_url:  string
+
+Role
+  author_id: integer
+  book_id: integer
+
+User
+  name: string
+  email: string
+
+Review
+  rate: integer
+  comment: text
+  book_id: integer
+  user_id: integer
+
+Category
+  title: string
+  description: text
+
 # Example table for a typical Book model.
 #
 # Book
@@ -34,4 +64,3 @@
 # Complete details are in the README file online.
 #
 # Have fun!
-
