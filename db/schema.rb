@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.text    "description"
     t.string  "image_url"
     t.integer "year"
-    t.integer "category_id"
+    t.integer "genre_id"
   end
 
-  add_index "books", ["category_id"], name: "index_books_on_category_id"
+  add_index "books", ["genre_id"], name: "index_books_on_genre_id"
 
-  create_table "categories", force: :cascade do |t|
-    t.string "title"
+  create_table "genres", force: :cascade do |t|
     t.text   "description"
+    t.string "name"
   end
 
   create_table "reviews", force: :cascade do |t|

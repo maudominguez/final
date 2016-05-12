@@ -4,7 +4,7 @@ Book
   description: text
   image_url:  string
   year: integer
-  category_id: integer
+  genre_id: integer
 
 Author
   name: text
@@ -24,8 +24,8 @@ Review
   book_id: integer
   user_id: integer
 
-Category
-  title: string
+Genre
+  name: string
   description: text
 
 # Example table for a typical Book model.
