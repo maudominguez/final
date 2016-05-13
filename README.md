@@ -3,6 +3,7 @@
 ### Overview
 
 Basic app where users can see books (authors, summary, genre, etc.) and write reviews.
+The idea is to emulate a very basic version of goodreads.com
 
 Models:
 * Book - Represents a book of real life. (Title, description, image, year). It can have many authors.
