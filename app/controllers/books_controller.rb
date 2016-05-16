@@ -2,6 +2,9 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    if params[:keyword].present?
+      @books = @books.where("title LIKE '%#{params[:keyword]}%'")
+    end
   end
 
   def show
