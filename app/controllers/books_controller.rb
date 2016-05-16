@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     if params[:keyword].present?
-      @books = @books.where("title LIKE '%#{params[:keyword]}%'")
+      @books = @books.where("title LIKE ? OR year = ?", "%#{params[:keyword]}%", params[:keyword])
     end
   end
 
