@@ -6,6 +6,8 @@ gem 'rails', '4.2.6'
 
 gem 'ez'
 
+gem 'bcrypt'
+
 gem 'faker'
 
 # Use sqlite3 as the database for Active Record

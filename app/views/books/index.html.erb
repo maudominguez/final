@@ -1,7 +1,13 @@
-<h1>List of books</h1>
+<aside>
+  <h3>Recommended For You</h3>
+  <% if session["book_id"].present? %>
+    <%= render Book.find_by(id: session["book_id"]) %>
+  <% else %>
+    <%= render Book.sample %>
+  <% end %>
+</aside>
 
-<% @books.each do |book| %>
-
-    <h3><%= link_to book.title, book_path(book.id) %></h3>
-
-<% end %>
+<div class="book-selections">
+  <%= render 'book', book: nil %>
+  <%= render @books %>
+</div>

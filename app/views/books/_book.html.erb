@@ -1,0 +1,9 @@
+<% poster_url = book ? book.image_url : 'add_new.png' %>
+<% path = book ? book_path(book.id) : new_book_path %>
+
+<div class="book-box">
+  <%= link_to image_tag(poster_url), path %>
+  <% if book %>
+    <h3><%= link_to book.title, book_path(book.id) %></h3>
+  <% end %>
+</div>

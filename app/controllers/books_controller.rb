@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     if @book == nil
       redirect_to books_url
     end
-    cookies["book_id"] = @book.id
+    session["book_id"] = @book.id
   end
 
   def new

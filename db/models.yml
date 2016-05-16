@@ -17,6 +17,7 @@ Role
 User
   name: string
   email: string
+  password_digest: text
 
 Review
   rate: integer
