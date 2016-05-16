@@ -1,0 +1,23 @@
+<%= form_for @book do |form| %>
+
+  <p><%= form.label :title %>
+  <br>
+  <%= form.text_field :title, size: 80, autofocus: true %></p>
+
+  <p><%= form.label :genre_id, "Genre" %>
+  <br>
+  <%= form.collection_select :genre_id, Genre.all.order('name'), :id, :name %></p>
+  <p><%= form.label :year %>
+  <br>
+  <%= form.text_field :year %></p>
+
+  <%= form.label :image_url,  "Link to poster URL" %>
+  <br>
+  <%= form.text_field :image_url, size: 80 %>
+
+  <p><%= form.label :description %>
+  <br>
+  <%= form.text_area :description, rows: 4, cols: 80 %></p>
+
+  <%= form.submit %>
+<% end %>
