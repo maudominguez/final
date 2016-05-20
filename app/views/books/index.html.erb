@@ -1,7 +1,7 @@
 <aside>
   <h3>Recommended For You</h3>
-  <% if session["book_id"].present? %>
-    <%= render Book.find_by(id: session["book_id"]) %>
+  <% if session["book_id"].present? and recommended = Book.find_by(id: session["book_id"]) %>
+    <%= render recommended %>
   <% else %>
     <%= render Book.sample %>
   <% end %>

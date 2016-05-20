@@ -1,0 +1,13 @@
+<h1><%= @genre.name %></h1>
+
+<div class="details">
+  <h3>Books of this genre</h3>
+
+  <ul>
+    <% books = Book.where(genre_id: @genre.id) %>
+    <% books.each do |book| %>
+      <li><%= link_to book.title, "/books/#{book.id}" %></li>
+    <% end %>
+  </ul>
+
+</div>

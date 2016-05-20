@@ -34,5 +34,26 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+    @book = Book.find_by(id: params[:id])
+  end
+
+  def update
+    book = Book.find_by(id: params[:id])
+    book.title = params[:book][:title]
+    book.description = params[:book][:description]
+    book.image_url = params[:book][:image_url]
+    book.year = params[:book][:year]
+    book.save
+    redirect_to books_url(@book), notice: "Updated #{book.title}"
+  end
+
+  def destroy
+    book = Book.find_by(id: params[:id])
+    if book
+      book.delete
+    end
+    redirect_to books_url
+  end
 
 end
