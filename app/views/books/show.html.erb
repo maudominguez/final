@@ -22,37 +22,24 @@
 
   <ul>
     <% @book.authors.each do |author| %>
-      <li><%= link_to author.name, "/authors/#{author.id}" %></li>
+      <li><%= link_to author.name, author_path(author) %></li>
     <% end %>
   </ul>
 
-  <h3>Add a Review</h3>
-
-  <%= form_tag "/reviews", :method => :post do %>
-    <%= label_tag :body, "What did you think?" %>
-    <!-- <input type="hidden" name="book_id" value="<%= @book.id %>"> -->
-    <%= hidden_field_tag :book_id, @book.id %>
-
-    <br>
-    <%= text_area_tag :body, '', rows: 4, cols: 50 %>
-    <br>
-    <%= submit_tag "Add Review" %>
+  <% if session["user_id"].present? and current_user = User.find_by(id: session["user_id"]) %>
+    <h3>Add a Review</h3>
+    <% review = Review.new %>
+    <% review.user_id = current_user.id %>
+    <% review.book_id = @book.id %>
+    <%= render 'reviews/form', review: review %>
   <% end %>
 
-  <h3>Reviews</h3>
+  <!-- Reviews -->
+  <% @book.reviews.each do |review| %>
+    <p><strong><%= review.user.name %></strong>
+    <p>Rating: <%= review.rate %></p>
+    <p>Comment: <%= review.comment %> </p>
+    <br>
+  <% end %>
 
-  <p><strong>Jeff said:</strong>
-    A pretty cool book if you like boring nonsense.  The cinematography looked
-    like a child made it, and the acting was amatuerish.  Other than, it was
-    great!
-  </p>
-
-  <p><strong>Borja said:</strong>
-    A great example of computer science and society at large!
-  </p>
-
-  <p><strong>Neil said:</strong>
-    Gravitons, photons, and neutrons, oh my!  Putting aside the obvious problems
-    with the scientific basis of the fiction in this book, it wasn't too bad.
-  </p>
 </div>

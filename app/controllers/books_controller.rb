@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find_by(id: params[:id])
     if @book == nil
-      redirect_to books_url
+      redirect_to books_url and return
     end
     session["book_id"] = @book.id
   end
