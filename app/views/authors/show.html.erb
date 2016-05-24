@@ -3,7 +3,7 @@
 <h3>Books</h3>
 
 <ul>
-  <% @author.roles.each do |role| %>
-    <li><%= link_to role.book.title, "/books/#{role.book.id}" %></li>
+  <% @author.books.each do |book| %>
+    <li><%= link_to book.title, "/books/#{book.id}" %></li>
   <% end %>
 </ul>

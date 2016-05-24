@@ -5,10 +5,10 @@ class AuthorsController < ApplicationController
   end
 
   def show
-  @author = Author.find_by(id: params[:id])
-  if @author == nil
-    redirect_to "/authors"
+    @author = Author.find_by(id: params[:id])
+    if @author == nil
+      redirect_to "/authors"
+    end
   end
-end
 
 end
