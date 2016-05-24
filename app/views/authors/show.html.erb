@@ -1,9 +1,19 @@
-<h1><%= @author.name %></h1>
+<h1>
+  <%= @author.name %>
+  <small>
+    <%= link_to "Edit This Author", edit_author_path(@author.id) %>
+    <%= link_to "Delete This Author", author_path(@author.id), :method => :delete %>
+  </small>
+</h1>
 
-<h3>Books</h3>
+<div class="details">
+
+<p><strong>Books by this author:<p><strong>
 
 <ul>
   <% @author.books.each do |book| %>
     <li><%= link_to book.title, "/books/#{book.id}" %></li>
   <% end %>
 </ul>
+
+</div>

@@ -26,4 +26,23 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def edit
+    @author = Author.find_by(id: params[:id])
+  end
+
+  def update
+    author = Author.find_by(id: params[:id])
+    author.name = params[:author][:name]
+    author.save
+    redirect_to authors_url(@author), notice: "Updated #{author.name}"
+  end
+
+  def destroy
+    author = Author.find_by(id: params[:id])
+    if author
+      author.delete
+    end
+    redirect_to author_url
+  end
+
 end
