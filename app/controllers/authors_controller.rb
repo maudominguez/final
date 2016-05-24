@@ -11,4 +11,8 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def new
+    @author = Author.new
+  end
+
 end
