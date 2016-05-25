@@ -13,13 +13,13 @@ class GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new
-    genre.name = params[:genre][:name]
-    genre.description = params[:genre][:description]
-    if genre.save
-      redirect_to genres_url, notice: "Created genre: #{genre.name}"
+    @genre = Genre.new
+    @genre.name = params[:genre][:name]
+    @genre.description = params[:genre][:description]
+    if @genre.save
+      redirect_to genres_url, notice: "Created genre: #{@genre.name}"
     else
-      redirect_to new_genre_url, notice: "Something went wrong!"
+      render :new
     end
   end
 
@@ -32,9 +32,9 @@ class GenresController < ApplicationController
     @genre.name = params[:genre][:name]
     @genre.description = params[:genre][:description]
     if @genre.save
-      redirect_to genre_url(@genre), notice: "Genre updated"
+      redirect_to genre_url(@genre), notice: "Genre was successfully updated."
     else
-      redirect_to @genre, notice: 'Could not update genre'
+      render :edit
     end
   end
 
