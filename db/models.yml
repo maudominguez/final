@@ -20,7 +20,7 @@ User
   password_digest: text
 
 Review
-  rate: integer
+  rating: integer
   comment: text
   book_id: integer
   user_id: integer

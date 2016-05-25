@@ -26,18 +26,23 @@
     <% end %>
   </ul>
 
+  <br>
+
   <% if session["user_id"].present? and current_user = User.find_by(id: session["user_id"]) %>
     <h3>Add a Review</h3>
     <% review = Review.new %>
     <% review.user_id = current_user.id %>
     <% review.book_id = @book.id %>
     <%= render 'reviews/form', review: review %>
+  <% else %>
+    Only signed-in users can add reviews.
   <% end %>
 
-  <!-- Reviews -->
+  <br>
+  <p><strong>Reviews</strong></p>
   <% @book.reviews.each do |review| %>
     <p><strong><%= review.user.name %></strong>
-    <p>Rating: <%= review.rate %></p>
+    <p>Rating: <%= review.rating %></p>
     <p>Comment: <%= review.comment %> </p>
     <br>
   <% end %>

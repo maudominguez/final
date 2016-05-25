@@ -4,10 +4,10 @@
 <%= form.hidden_field :user_id, value: review.user_id %>
 
   <p>
-  <%= form.label :rate, "Rate" %>
+  <%= form.label :rating, "Rating" %>
   <br>
-  <% rate_options = [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]%>
-  <%= form.select(:rate, options_for_select(rate_options, 1)) %>
+  <% rating_options = [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]%>
+  <%= form.select(:rating, options_for_select(rating_options, 1)) %>
   </p>
 
   <p>

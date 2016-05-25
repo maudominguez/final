@@ -40,7 +40,7 @@ class AuthorsController < ApplicationController
   def destroy
     author = Author.find_by(id: params[:id])
     if author
-      author.delete
+      author.destroy
     end
     redirect_to author_url
   end

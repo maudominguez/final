@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new
-    @review.rate = params[:review][:rate]
+    @review.rating = params[:review][:rating]
     @review.comment = params[:review][:comment]
     @review.book_id = params[:review][:book_id]
     @review.user_id = params[:review][:user_id]

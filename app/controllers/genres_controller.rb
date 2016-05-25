@@ -34,7 +34,7 @@ class GenresController < ApplicationController
 
   def destroy
     genre = Genre.find_by(id: params[:id])
-    genre.delete
+    genre.destroy
     redirect_to "http://localhost:3000/movies"
   end
 

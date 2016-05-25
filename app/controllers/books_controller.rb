@@ -51,7 +51,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find_by(id: params[:id])
     if book
-      book.delete
+      book.destroy
     end
     redirect_to books_url
   end

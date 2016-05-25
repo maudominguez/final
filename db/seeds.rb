@@ -9,7 +9,7 @@ Genre.delete_all
 def create_y_reviews_for_book y, book
   y.times do
     user = User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'apollo', password_confirmation: 'apollo')
-    Review.create(rate: Faker::Number.between(1, 5), comment: Faker::Lorem.paragraph,
+    Review.create(rating: Faker::Number.between(1, 5), comment: Faker::Lorem.paragraph,
                   book_id: book.id, user_id: user.id)
   end
 end
