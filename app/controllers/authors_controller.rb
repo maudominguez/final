@@ -7,7 +7,7 @@ class AuthorsController < ApplicationController
   def show
     @author = Author.find_by(id: params[:id])
     if @author == nil
-      redirect_to "/authors"
+      redirect_to authors_url
     end
   end
 

@@ -17,7 +17,7 @@ class GenresController < ApplicationController
     genre.name = params[:name]
     genre.photo_url = params[:photo_url]
     genre.save
-    redirect_to "http://localhost:3000/movies"
+    redirect_to genres_url
   end
 
   def edit
@@ -29,13 +29,13 @@ class GenresController < ApplicationController
     genre.name = params[:name]
     genre.photo_url = params[:photo_url]
     genre.save
-    redirect_to "http://localhost:3000/movies"
+    redirect_to genres_url
   end
 
   def destroy
     genre = Genre.find_by(id: params[:id])
     genre.destroy
-    redirect_to "http://localhost:3000/movies"
+    redirect_to genres_url
   end
 
 end
