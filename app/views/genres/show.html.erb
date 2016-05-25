@@ -1,7 +1,15 @@
-<h1><%= @genre.name %></h1>
+<h1>
+<%= @genre.name %>
+<small>
+  <%= link_to "Edit This Genre", edit_genre_path(@genre.id) %>
+  <%= link_to "Delete This Genre", genre_path(@genre.id), :method => :delete %>
+</small>
+</h1>
 
 <div class="details">
-  <h3>Books of this genre</h3>
+  <p><strong>Description:</strong> <%= @genre.description %></p>
+
+  <p><strong>Books of this genre:</strong></p>
 
   <ul>
     <% books = Book.where(genre_id: @genre.id) %>

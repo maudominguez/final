@@ -1,0 +1,14 @@
+<%= form_for @genre do |form| %>
+
+  <p><%= form.label :name %>
+  <br>
+  <%= form.text_field :name, size: 80, autofocus: true %>
+  </p>
+
+  <p><%= form.label :description %>
+  <br>
+  <%= form.text_area :description, rows: 4, cols: 80 %>
+  </p>
+
+  <%= form.submit %>
+<% end %>
