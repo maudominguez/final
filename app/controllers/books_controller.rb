@@ -27,6 +27,7 @@ class BooksController < ApplicationController
     @book.genre_id = params[:book][:genre_id]
     @book.year = params[:book][:year]
     if @book.save
+      add_author_to_book
       redirect_to books_url, notice: "Book was successfully added"
     else
       render :new
@@ -44,15 +45,19 @@ class BooksController < ApplicationController
     @book.image_url = params[:book][:image_url]
     @book.year = params[:book][:year]
     if @book.save
-      if params[:book][:authors].present?
-        author = Author.find(params[:book][:authors])
-        if author
-          @book.authors << author
-        end
-      end
+      add_author_to_book
       redirect_to books_url(@book), notice: "Book was successfully updated"
     else
       render :edit
+    end
+  end
+
+  def add_author_to_book
+    if params[:book][:authors].present?
+      author = Author.find(params[:book][:authors])
+      if author
+        @book.authors << author
+      end
     end
   end
 

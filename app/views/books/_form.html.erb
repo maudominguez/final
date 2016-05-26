@@ -24,7 +24,7 @@
   <%= form.label :author_id, "Add an author" %>
   <br>
   <%= form.collection_select :authors,
-        Author.where('id NOT IN (?)', @book.author_ids),
+        Author.where.not(id: @book.author_ids),
         :id, :name, include_blank: 'Select' %>
   </p>
 
