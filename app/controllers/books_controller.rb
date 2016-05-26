@@ -43,6 +43,7 @@ class BooksController < ApplicationController
     @book.title = params[:book][:title]
     @book.description = params[:book][:description]
     @book.image_url = params[:book][:image_url]
+    @book.genre_id = params[:book][:genre_id]
     @book.year = params[:book][:year]
     if @book.save
       add_author_to_book

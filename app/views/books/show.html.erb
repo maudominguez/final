@@ -11,7 +11,11 @@
   <p><%= image_tag @book.image_url, class: 'pull-right' %></p>
 
   <p><strong>Genre: </strong>
-    <%= link_to @book.genre.name, "/genres/#{@book.genre.id}" %>
+    <% if @book.genre.present?%>
+      <%= link_to @book.genre.name, "/genres/#{@book.genre.id}" %>
+    <% else %>
+      Unknown
+    <% end %>
   </p>
 
   <p><strong>Released:</strong> <%= @book.year %></p>

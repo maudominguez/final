@@ -1,5 +1,6 @@
 class Genre < ActiveRecord::Base
-  validates :name, presence: true
-
   has_many :books
+
+  validates :name, presence: true, length: { maximum: 100 }
+  validates :description, length: { maximum: 400}
 end
