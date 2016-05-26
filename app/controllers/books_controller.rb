@@ -27,10 +27,9 @@ class BooksController < ApplicationController
     @book.genre_id = params[:book][:genre_id]
     @book.year = params[:book][:year]
     if @book.save
-      redirect_to books_url, notice: "Book added! Thanks!"
+      redirect_to books_url, notice: "Book was successfully added"
     else
-      # redirect_to new_book_url, notice: "Something went wrong!"
-      render 'new'
+      render :new
     end
   end
 
@@ -39,19 +38,28 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find_by(id: params[:id])
-    book.title = params[:book][:title]
-    book.description = params[:book][:description]
-    book.image_url = params[:book][:image_url]
-    book.year = params[:book][:year]
-    book.save
-    redirect_to books_url(@book), notice: "Updated #{book.title}"
+    @book = Book.find_by(id: params[:id])
+    @book.title = params[:book][:title]
+    @book.description = params[:book][:description]
+    @book.image_url = params[:book][:image_url]
+    @book.year = params[:book][:year]
+    if @book.save
+      if params[:book][:authors].present?
+        author = Author.find(params[:book][:authors])
+        if author
+          @book.authors << author
+        end
+      end
+      redirect_to books_url(@book), notice: "Book was successfully updated"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    book = Book.find_by(id: params[:id])
-    if book
-      book.destroy
+    @book = Book.find_by(id: params[:id])
+    if @book
+      @book.destroy
     end
     redirect_to books_url
   end

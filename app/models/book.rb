@@ -4,4 +4,7 @@ class Book < ActiveRecord::Base
   has_many :roles
   has_many :authors, :through => :roles
   has_many :reviews
+
+  validates :title, presence: true
+
 end
