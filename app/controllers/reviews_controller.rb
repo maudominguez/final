@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to book_url(@review.book_id), notice: "Review added! Thanks!"
     else
-      render books_path, notice: "Something went wrong!"
+      redirect_to book_url(@review.book_id), notice: "Something went wrong!"
     end
   end
 
