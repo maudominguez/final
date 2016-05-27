@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     if @book == nil
       redirect_to books_url and return
     end
+    @reviews = @book.reviews.paginate(:page => params[:page], per_page: 3)
     session["book_id"] = @book.id
   end
 

@@ -39,12 +39,13 @@
     <% review.book_id = @book.id %>
     <%= render 'reviews/form', review: review %>
   <% else %>
-    Only signed-in users can add reviews.
+    <h2>Only signed-in users can add reviews.</h2>
   <% end %>
 
   <br>
   <p><strong>Reviews</strong></p>
-  <% @book.reviews.each do |review| %>
+  <%= will_paginate @reviews %>
+  <% @reviews.each do |review| %>
     <p><strong><%= review.user.name %></strong>
     <p>Rating: <%= review.rating %></p>
     <p>Comment: <%= review.comment %> </p>
