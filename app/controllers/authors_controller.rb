@@ -19,10 +19,10 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new
     @author.name = params[:author][:name]
+    @author.image_url = params[:author][:image_url]
     if @author.save
       redirect_to authors_url, notice: "Author added!"
     else
-      # redirect_to new_author_url, notice: "Something went wrong!"
       render 'new'
     end
   end
@@ -32,10 +32,14 @@ class AuthorsController < ApplicationController
   end
 
   def update
-    author = Author.find_by(id: params[:id])
-    author.name = params[:author][:name]
-    author.save
-    redirect_to authors_url(@author), notice: "Updated #{author.name}"
+    @author = Author.find_by(id: params[:id])
+    @author.name = params[:author][:name]
+    @author.image_url = params[:author][:image_url]
+    if @author.save
+      redirect_to authors_url(@author), notice: "Updated author"
+    else
+      render :edit
+    end
   end
 
   def destroy

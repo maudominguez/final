@@ -1,8 +1,14 @@
 <%= form_for @author do |form| %>
 
+  <%= render 'shared/error_messages', object: form.object %>
+
   <p><%= form.label :name, "Name" %>
   <br>
   <%= form.text_field :name, size: 80, autofocus: true %></p>
+
+  <%= form.label :image_url,  "Link to picture URL" %>
+  <br>
+  <%= form.text_field :image_url, size: 80 %>
 
   <%= form.submit %>
 <% end %>
