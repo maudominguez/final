@@ -19,10 +19,16 @@ In general, if you don't sign in you will have read-only privileges.
 You need to sign-in to be able to create and edit books, etc..
 
 You can use these users from the seeds file:
-Admin user: They can destroy other user accounts.
+
+* Admin user: They can destroy other user accounts.
+
   email: admin@example.org
+
   password: password
 
-Normal user
+
+* Normal user
+
   email: user@example.org
+
   password: password
