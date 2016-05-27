@@ -22,17 +22,27 @@ def create_n_authors_for_book n, book
 end
 
 def create_book_with_n_authors_and_y_reviews(n, y, genre)
-  book = Book.create(title: Faker::Book.title, description: Faker::Lorem.paragraph,
+  title = Faker::Book.title
+  image = fake_image_url title
+  book = Book.create(title: title, description: Faker::Lorem.paragraph, image_url: image,
                       year: Faker::Number.between(1400, 2016), genre_id: genre.id)
 
   create_n_authors_for_book n, book
   create_y_reviews_for_book y, book
 end
 
+def fake_image_url title
+  background_color = Faker::Number.hexadecimal(6)
+  foreground_color = Faker::Number.hexadecimal(6)
+  image = "http://dummyimage.com/600x400/#{background_color}/#{foreground_color}&text=#{title}"
+end
+
 def create_author_with_n_books_of_genre n, genre
   author = Author.create(name: Faker::Book.author)
   n.times do
-    book = Book.create(title: Faker::Book.title, description: Faker::Lorem.paragraph,
+    title = Faker::Book.title
+    image = fake_image_url title
+    book = Book.create(title: title, description: Faker::Lorem.paragraph, image_url: image, #Faker::Avatar.image,
                         year: Faker::Number.between(1400, 2016), genre_id: genre.id)
     Role.create(author_id: author.id, book_id: book.id)
   end
