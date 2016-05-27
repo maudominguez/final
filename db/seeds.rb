@@ -5,10 +5,12 @@ User.delete_all
 Review.delete_all
 Genre.delete_all
 
+PASSWORD = 'password'
+
 #this also creates a new user for each review
 def create_y_reviews_for_book y, book
   y.times do
-    user = User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'apollo', password_confirmation: 'apollo')
+    user = User.create(name: Faker::Name.name, email: Faker::Internet.email, password: PASSWORD, password_confirmation: PASSWORD)
     Review.create(rating: Faker::Number.between(1, 5), comment: Faker::Lorem.paragraph,
                   book_id: book.id, user_id: user.id)
   end
@@ -57,7 +59,7 @@ def create_author_with_n_books_of_genre n, genre
 end
 
 def create_admin_user
-  admin = User.create(name: 'Administrator', email: 'admin@example.org', admin: true, password: 'apollo', password_confirmation: 'apollo')
+  admin = User.create(name: 'Administrator', email: 'admin@example.org', admin: true, password: PASSWORD, password_confirmation: PASSWORD)
 end
 
 create_admin_user

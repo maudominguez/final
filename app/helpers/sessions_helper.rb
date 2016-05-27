@@ -30,7 +30,7 @@ module SessionsHelper
   end
 
   def make_sure_correct_user
-    user = User.find(params[:id])
+    user = User.find_by(id: params[:id])
     redirect_to(root_url) unless equal_to_current_user?(user)
   end
 
