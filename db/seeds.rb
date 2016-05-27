@@ -16,7 +16,9 @@ end
 
 def create_n_authors_for_book n, book
   n.times do
-    author = Author.create(name: Faker::Book.author)
+    name = Faker::Book.author
+    image = fake_author_image_url name
+    author = Author.create(name: name, image_url: image)
     Role.create(author_id: author.id, book_id: book.id)
   end
 end
@@ -37,8 +39,14 @@ def fake_image_url title
   image = "http://dummyimage.com/600x400/#{background_color}/#{foreground_color}&text=#{title}"
 end
 
+def fake_author_image_url name
+  image = "http://flathash.com/#{name}"
+end
+
 def create_author_with_n_books_of_genre n, genre
-  author = Author.create(name: Faker::Book.author)
+  name = Faker::Book.author
+  image = fake_author_image_url name
+  author = Author.create(name: name, image_url: image)
   n.times do
     title = Faker::Book.title
     image = fake_image_url title

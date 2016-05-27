@@ -35,21 +35,4 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  private
-    def make_sure_correct_user
-      user = User.find(params[:id])
-      redirect_to(root_url) unless equal_to_current_user?(user)
-    end
-
-    def make_sure_signed_in_user
-      unless signed_in_user
-        redirect_to login_url, notice: "Please sign in."
-      end
-    end
-
-    def make_sure_admin_user
-      if not admin_signed_in?
-        redirect_to root_url, notice: "You need to have admin privileges to do that."
-      end
-    end
 end

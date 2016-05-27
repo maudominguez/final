@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :make_sure_signed_in_user, only: [:edit, :update, :destroy]
 
   def index
     @books = Book.all
