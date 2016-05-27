@@ -17,6 +17,23 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
+    if @user.save
+      redirect_to user_url(@user), notice: "User was successfully updated."
+    else
+      render :edit
+    end
+  end
+
   def create
     @user = User.new
     @user.name = params[:user][:name]

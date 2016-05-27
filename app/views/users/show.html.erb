@@ -1,9 +1,13 @@
-<h1>My Account</h1>
+<h1>
+My Account
+<small>
+  <%= link_to "Edit User", edit_user_path(@user.id) %>
+</small>
+</h1>
 
 <% if equal_to_current_user? @user %>
   <p>Name: <%= @user.name %></p>
   <p>Email: <%= @user.email %></p>
-  <p>Password: <%= @user.password %></p>
 <% else %>
 
 <h3>Nice Try.</h3>
