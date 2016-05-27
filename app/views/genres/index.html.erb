@@ -5,6 +5,7 @@ Genres
 </small>
 </h1>
 
+<%= will_paginate %>
 <% @genres.each do |genre| %>
 
     <h3><%= link_to genre.name, genre_path(genre.id) %></h3>

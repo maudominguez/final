@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
   before_action :make_sure_signed_in_user, only: [:edit, :update, :destroy]
 
   def index
-    @authors = Author.all
+    @authors = Author.paginate(page: params[:page], per_page: 14)
   end
 
   def show

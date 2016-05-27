@@ -61,21 +61,12 @@ def create_admin_user
 end
 
 create_admin_user
-4.times do
+7.times do
   genre = Genre.create(name: Faker::Book.genre, description: Faker::Lorem.paragraph)
-  #create_book_with_n_authors_and_y_reviews 1, 1, genre
-  #create_book_with_n_authors_and_y_reviews 2, 2, genre
-  #create_book_with_n_authors_and_y_reviews 3, 3, genre
   create_book_with_n_authors_and_y_reviews 4, 4, genre
-
-  #create_author_with_n_books_of_genre 3, genre
   create_author_with_n_books_of_genre 4, genre
 end
 
-
-=begin
-10.times do
-  user = User.create(name: Faker::Name.name, email: Faker::Internet.email)
-
+5.times do
+  genre = Genre.create(name: Faker::Book.genre, description: Faker::Lorem.paragraph)
 end
-=end

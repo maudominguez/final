@@ -2,7 +2,7 @@ class GenresController < ApplicationController
   before_action :make_sure_signed_in_user, only: [:edit, :update, :destroy]
 
   def index
-    @genres = Genre.all
+    @genres = Genre.paginate(page: params[:page], per_page: 10)
   end
 
   def show

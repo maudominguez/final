@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :make_sure_signed_in_user, only: [:edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.paginate(page: params[:page], per_page: 14)
     if params[:keyword].present?
       @books = @books.where("title LIKE ? OR year = ?", "%#{params[:keyword]}%", params[:keyword])
     end
