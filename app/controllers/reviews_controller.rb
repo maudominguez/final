@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :make_sure_signed_in_user
 
   def create
     @review = Review.new
