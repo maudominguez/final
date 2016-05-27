@@ -32,3 +32,8 @@ You can use these users from the seeds file:
   email: user@example.org
 
   password: password
+
+### Add new reviews
+Only signed in users can add new reviews.
+
+To add a new review go to the book show page.
