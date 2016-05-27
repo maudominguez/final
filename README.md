@@ -15,7 +15,7 @@ Models:
 
 ### Some Users from the seeds file
 In general, if you don't sign in you will have read-only privileges.
-You need to sign-in to be able to create and edit books, etc.
+You need to sign-in to be able to create and edit books, etc..
 
 You can use these users from the seeds file:
 * Admin user: They can destroy other user accounts
