@@ -32,7 +32,7 @@
 
   <br>
 
-  <% if session["user_id"].present? and current_user = User.find_by(id: session["user_id"]) %>
+  <% if current_user = signed_in_user %>
     <h3>Add a Review</h3>
     <% review = Review.new %>
     <% review.user_id = current_user.id %>

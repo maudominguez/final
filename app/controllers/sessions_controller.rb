@@ -4,24 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user
-      if user.authenticate(params[:password])
-        session["user_id"] = user.id
+    user = User.find_by(email: params[:email].strip.downcase)
+    if user && user.authenticate(params[:password])
+        log_in user
         flash["notice"] = "Welcome back, #{user.name}"
         redirect_to books_url
         return
-      else
-        # Email is ok, but password was wrong
-      end
     else
-      # Email is unknown
+      flash.now[:error] = "Invalid email or password"
+      render :new
     end
-    redirect_to login_url, notice: "Invalid email or password"
   end
 
   def destroy
-    reset_session
+    log_out
     redirect_to books_url
   end
 

@@ -38,6 +38,11 @@ def create_author_with_n_books_of_genre n, genre
   end
 end
 
+def create_admin_user
+  admin = User.create(name: 'Administrator', email: 'admin@example.org', admin: true, password: 'apollo', password_confirmation: 'apollo')
+end
+
+create_admin_user
 4.times do
   genre = Genre.create(name: Faker::Book.genre, description: Faker::Lorem.paragraph)
   #create_book_with_n_authors_and_y_reviews 1, 1, genre

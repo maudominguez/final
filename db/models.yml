@@ -17,6 +17,7 @@ Role
 User
   name: string
   email: string
+  admin: boolean
   password_digest: text
 
 Review

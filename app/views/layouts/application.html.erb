@@ -7,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <nav>
     <ul>
       <li><%= link_to "Books", books_path %></li>
@@ -19,7 +18,7 @@
       <% end %>
     </ul>
     <ul class="nav-right">
-      <% if session["user_id"].present? and current_user = User.find_by(id: session["user_id"]) %>
+      <% if current_user = signed_in_user %>
         <li>Hello, <%= link_to current_user.name, user_path(current_user) %>!</li>
         <li><%= link_to "Sign Out", logout_path %></li>
       <% else %>
@@ -31,8 +30,8 @@
 
   <div class="container">
 
-    <% if flash["notice"].present? %>
-    <p><%= flash["notice"] %></p>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
     <%= yield %>
