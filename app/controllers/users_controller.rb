@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
+      log_in @user
       flash[:success] = "Welcome to the Book Reviews App!"
       redirect_to books_url
     else
