@@ -62,7 +62,12 @@ def create_admin_user
   admin = User.create(name: 'Administrator', email: 'admin@example.org', admin: true, password: PASSWORD, password_confirmation: PASSWORD)
 end
 
+def create_normal_user
+  user = User.create(name: 'John K.', email: 'user@example.org', password: PASSWORD, password_confirmation: PASSWORD)
+end
+
 create_admin_user
+create_normal_user
 7.times do
   genre = Genre.create(name: Faker::Book.genre, description: Faker::Lorem.paragraph)
   create_book_with_n_authors_and_y_reviews 4, 4, genre
